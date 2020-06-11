@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 
-{% block 'content' %} 
+{% block 'content' %}
 
-<h1>Pool - Reservations</h1>
+<h1>Pool Reservations</h1>
 
-{% endblock %} 
+	{% if all_reservations %}
+			{% for records in all_reservations %}
+				{{ records.name }}
+				{{ records.date }}
+				{{ records.time }}
+				<a href="#">Edit</a><br/>
+			{% endfor %}
+	{% endif %}
+
+{% endblock %}
