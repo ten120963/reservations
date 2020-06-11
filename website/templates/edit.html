@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block 'content' %}
+
+<h1>Pool - Edit Reservations</h1>
+<br/><br/>
+{% if get_reservation %}
+	<form method="POST">
+		{% csrf_token %}	
+		  <div class="form-group">    
+		    <input type="text" class="form-control" value="{{ get_reservation.name }}" name="name">    
+		  </div>
+		  <div class="form-group">    
+		    <input type="text" class="form-control" value="{{ get_reservation.date }}" name="date">    
+		  </div>
+		  <div class="form-group">    
+		    <input type="text" class="form-control" value="{{ get_reservation.time }}" name="time">    
+		  </div>
+		  <br/>
+		  
+		  <button type="submit" class="btn btn-secondary">Save Changes</button>
+	</form>
+
+	<br/>
+	<br/>
+	<form method="POST" action="{% url 'delete' get_reservation.id %}">
+		{% csrf_token %}
+		<input type="hidden" value="{{ get_reservation.id }}" name="id">
+		<button type="submit" class="btn btn-secondary">Delete Reservation</button>
+	</form>	
+
+{% endif %}
+
+{% endblock %}

@@ -3,14 +3,14 @@
 {% block 'content' %}
 
 <h1>Pool - Reservations</h1>
-
+<br/>
 	{% if all_reservations %}
-			{% for records in all_reservations %}
-				{{ records.name }}
-				{{ records.date }}
-				{{ records.time }}
-				<a href="#">Edit</a><br/>
-			{% endfor %}
+		{% for records in all_reservations %}
+			{{ records.name }}
+			{{ records.date }}
+			{{ records.time }}
+			<a href="{% url 'edit' records.id %}">Edit</a><br/>
+		{% endfor %}
 	{% endif %}
 
 {% endblock %}
