@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>{% block title %}Hello World{% endblock %}</title>
   </head>
   <body>
 
@@ -23,18 +23,26 @@
      
       <li class="nav-item">
         <a class="nav-link" href="{% url 'add' %}">Add Reservation</a>
-      </li>
-    
-     
+      </li>  
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'by_date' %}">Reservations by Date</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_all' %}">All Reservations</a>
+      </li>    
     </ul>
     
   </div>
+
 </nav>
   
 <br/>
 <div class="container">
 	{% if messages %}
 		{% for message in messages %}
+			<!-- testing color
+			<div class="alert alert-{{ color }} alert-dismissible fade show" role="alert"> 
+			--> 
 			<div class="alert alert-warning alert-dismissible fade show" role="alert">  
 		  		<button class="close" data-dismiss="alert">
 					<small><sup>x</sup></small>

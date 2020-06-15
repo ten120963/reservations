@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Pool - Reservations{% endblock %}
+{% block title %}Pool - Listing All Reservations{% endblock %}
 
 {% block 'content' %}
 
-<h1>Pool - Reservations</h1>
+<h1>Pool - Listing All Reservations</h1>
 <br/>
 	{% if all_reservations %}
 		<table class="table" table-bordered>
@@ -20,7 +20,7 @@
 	{% else %}
 		<table class="table" table-bordered>
 			<tr>
-				<td>No reservations for today</td>				
+				<td>Database is empty</td>				
 			</tr>	
 		</table>		
 	{% endif %}
