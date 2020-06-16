@@ -28,15 +28,11 @@ def add(request):
 		form = ReservationForm(request.POST or None)
 		if form.is_valid():
 			form.save()
-			messages.success(request, ('Reservation has been added!'))
-			#color = "success"
-			return redirect('home')
-			#return render(request, 'home.html', {'color': color})			
-		else:
-			#color = "danger"
+			messages.success(request, ('Reservation has been added!'))			
+			return redirect('home')			
+		else:			
 			messages.success(request, ('Date and time already reserved.  Please try again.'))	
-			#return render(request, 'add.html', {'color': color})	
-			return render(request, 'add.html', {})
+			return render(request, 'add.html', {})				
 	else:
 		return render(request, 'add.html', {})	
 
@@ -47,14 +43,11 @@ def edit(request, list_id):
 		if form.is_valid():
 			form.save()
 			messages.success(request, ('Reservation has been edited!'))
-			#color = "success"
-			return redirect('home')
-			#return render(request, 'home.html', {'color': color})
-		else:
-			#color = "danger"
-			messages.success(request, ('Seems like there was an error...'))	
-			#return render(request, 'edit.html', {'color': color})
-			return render(request, 'edit.html', {'color': color})	
+			return redirect('home')			
+		else:			
+			messages.success(request, ('Date and time already reserved.  Please try again.'))	
+			return render(request, 'home.html', {})
+			
 	else:
 		get_reservation = Reservation.objects.get(pk=list_id)
 		return render(request, 'edit.html', {'get_reservation': get_reservation})
@@ -64,14 +57,10 @@ def delete(request, list_id):
 		current_reservation = Reservation.objects.get(pk=list_id)
 		current_reservation.delete()
 		messages.success(request, ('Reservation has been deleted!')) 
-		#color = "success"
-		return redirect('home')
-		#return render(request, 'home.html', {'color': color})
+		return redirect('home')		
 	else:
-		#color = "danger"
-		messages.success(request, ('Nothing to see here...'))	
-		return redirect('home')	
-		#return render(request, 'home.html', {'color': color})	
+		messages.success(request, ('Nothing to see here...'))			
+		return render(request, 'home.html', {})	
 
 def by_date(request):
 	
