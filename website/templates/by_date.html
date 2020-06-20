@@ -6,14 +6,16 @@
 
 <h1>Pool - Reservations by Date</h1>
 <br/>
-<form>	
-	<table class="table" table-bordered style="width: 30%">
+<form action="{% url 'search_results' %}" method="get">
+	<table class="table" style="width: 30%">
 		<tr>
 			<td>			
 				<label for="date">Date</label>
 			</td>
 			<td>	
-				<input type="date" class="form-control" id="date" name="date" value="none">				
+				<input type="date" class="form-control" id="date" name="q"					
+		        value="{{ for_date }}"
+		        min="{{ for_date }}" max="{{ maxdate }}">						
 			</td>
 			<td>
 				<button type="submit" class="btn btn-primary">Search</button>
@@ -21,25 +23,5 @@
 		</tr>	
 	</table>			
 </form>		
-
-<br/>	
-	{% if queryset %}
-		<table class="table" table-bordered>
-			{% for records in queryset %}
-				<tr>
-					<td>{{ records.name }}</td>
-					<td>{{ records.date }}</td>
-					<td>{{ records.time }}</td>
-					<td><a href="{% url 'edit' records.id %}">Edit</a></td>
-				</tr>					
-			{% endfor %}
-		</table>
-	{% else %}
-		<table class="table" table-bordered>
-			<tr>
-				<td>No reservations for that date were found</td>				
-			</tr>	
-		</table>	
-	{% endif %}
 
 {% endblock %}

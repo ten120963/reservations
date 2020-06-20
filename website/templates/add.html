@@ -17,8 +17,8 @@
 
 	  <label for="date">Date:</label>
 		<input type="date" id="date" name="date"
-        value="2020-06-01"
-        min="2020-01-01" max="2021-12-31">
+        value="{{ for_date }}"
+        min="{{ for_date }}" max="{{ maxdate }}">
 
       <label for="time">Select a Time:</label>
 	   	<select name="time" id="time">
